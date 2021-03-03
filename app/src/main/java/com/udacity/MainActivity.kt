@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var notificationManager: NotificationManager
     private lateinit var pendingIntent: PendingIntent
     private lateinit var action: NotificationCompat.Action
-//    private lateinit var loadingButton: LoadingButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,9 +38,6 @@ class MainActivity : AppCompatActivity() {
         createChannel(getString(R.string.notification_channel_id), getString(R.string.notification_channel_name))
 
         registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
-
-        // Loading button
-//        loadingButton = findViewById(R.id.loading_button)
 
         loading_button.setOnClickListener {
 
@@ -71,6 +67,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        unregisterReceiver(receiver)
     }
 
     private val receiver = object : BroadcastReceiver() {
