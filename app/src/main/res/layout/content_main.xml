@@ -57,6 +57,8 @@
 
     <com.udacity.LoadingButton
         android:id="@+id/loading_button"
+        app:textColor="@color/white"
+        app:backgroundColor="@color/colorPrimary"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_margin="20dp"
